@@ -142,7 +142,7 @@ export default function Home() {
               You can check the source code for this page{" "}
               <a
                 className="text-blue-500 underline"
-                href="https://readwise.io/access_token"
+                href="https://github.com/jonasmerlin/readwise-challenge"
               >
                 here
               </a>
