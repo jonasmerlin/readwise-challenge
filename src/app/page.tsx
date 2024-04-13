@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Pencil1Icon, ReloadIcon, UpdateIcon } from "@radix-ui/react-icons";
-import Image from "next/image";
+import { track } from "@vercel/analytics";
 
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
@@ -16,7 +16,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 
 const fetchDocumentListApi = async (
@@ -113,10 +112,14 @@ export default function Home() {
           goal,
           readwiseApiToken,
           readwiseReadTag,
-          numReadArticles: readwiseReads.length, 
+          numReadArticles: readwiseReads.length,
         })
       );
       setSettingsFoundInLocalStorage(true);
+
+      // This is a custom event that will be tracked by Vercel Analytics
+      // It only says that the settings were saved. None of the data you entered is sent here.
+      track("Settings Saved");
     });
   }
 
